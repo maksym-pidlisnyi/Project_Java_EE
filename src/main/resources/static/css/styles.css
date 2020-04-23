@@ -1,0 +1,295 @@
+* {
+    position: relative;
+}
+
+body {
+    background: url("../img/back.jpg");
+
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.slider-container {
+    padding-top: 75px;
+    width: 50%;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.slider img {
+    text-align: center;
+    margin: 15px auto 10px;
+    width: 50%;
+    height: 50%;
+}
+
+.navbar-brand {
+    padding-top: 25px;
+}
+
+.navbar-brand h1 {
+    font-family: 'Lora', serif;
+    color: #359133;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #222;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: .75;
+}
+
+#nav-list a {
+    color: #951C49;
+    text-align: center;
+}
+
+#nav-list a:hover {
+    background: #E7E7E7;
+}
+
+#nav-list a span {
+    font-size: 1.8em;
+}
+
+#nav-list1 a {
+    color: #951C49;
+    text-align: center;
+}
+
+#nav-list1 a:hover {
+    background: #E7E7E7;
+}
+
+#nav-list1 a span {
+    font-size: 1.8em;
+}
+
+#phone {
+    margin-top: 5px;
+}
+
+#phone a { /* Phone number */
+    text-align: right;
+    padding-bottom: 0;
+}
+
+#phone div { /* We Deliver */
+    color: #557c3e;
+    text-align: right;
+    padding-right: 15px;
+}
+
+header {
+    top: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+}
+
+.modal {
+    z-index: 99999;
+}
+
+.solid {
+    border: 2px solid black;
+}
+
+.dashed {
+    border-top: 2px dashed black;
+}
+
+.panel-footer {
+    margin-top: 70px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    background-color: rgba(103, 103, 103, 0.83);
+    border-top: 0;
+}
+
+.panel-footer div.row {
+    margin-bottom: 35px;
+}
+
+#hours, #address {
+    line-height: 2;
+}
+
+#hours > span, #address > span {
+    font-size: 1.3em;
+}
+
+#address p {
+    color: #2d6628;
+    font-size: .8em;
+    line-height: 1.8;
+}
+
+#testimonials {
+    font-style: italic;
+}
+
+#testimonials p:nth-child(2) {
+    margin-top: 25px;
+}
+
+.text {
+    padding-top: 7%;
+    color: black;
+}
+
+.container-form {
+    padding-bottom: 20px;
+    padding-top: 40px;
+    width: 60%;
+    margin: 50px auto auto;
+}
+
+.container-form > h1 {
+    font-weight: bold;
+    font-size: 37px;
+    text-align: center;
+}
+
+.container-form form {
+    text-align: center;
+    border: 5px solid black;
+}
+
+.container-form input {
+    margin: 10px 10px 10px 10px;
+}
+
+.item {
+    display: inline-block;
+    border: 1px solid black;
+    margin: 1.5%;
+    text-align: center;
+    padding: 10px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.item:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.item img {
+    width: 50%;
+    height: 50%;
+}
+
+.productName {
+    margin-top: 0.8%;
+}
+
+.price-block {
+    width: 100%;
+    height: 100%;
+    margin: 5px;
+}
+
+.show-cart li {
+    display: flex;
+}
+
+.button {
+    width: 100%;
+    height: 100%;
+}
+
+.whenPrint {
+    display: none;
+}
+
+del {
+    font-size: 10pt;
+    color: #a9a9a9;
+}
+
+.price {
+    display: inline-block;
+    font-size: 19pt;
+}
+
+@media print {
+    .button {
+        display: none;
+
+    }
+
+    .whenPrint {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 767px) {
+    .text {
+        padding-top: 40px;
+    }
+
+    .item {
+        margin: 20px;
+        overflow: hidden;
+    }
+
+    .navbar-brand h1 {
+        font-size: 5vw; /* 1vw = 1% of viewport width */
+    }
+
+    #collapsable-nav a {
+        font-size: 1.2em;
+    }
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        margin: 30px auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-content {
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    }
+}
+
+.close {
+    float: right;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    text-decoration: none;
+}
+
+.close:focus, .close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .75;
+}
