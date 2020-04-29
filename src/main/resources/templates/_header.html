@@ -7,7 +7,7 @@
     <div class="header-bar">
         <th:block sec:authorize="isAuthenticated()">
             Hello
-            <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a>
+            <a th:href="@{/admin/accountInfo}" th:utext="max">..</a>
             &nbsp;|&nbsp;
             <a th:href="@{/admin/logout}">Logout</a>
         </th:block>
