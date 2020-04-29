@@ -1,8 +1,5 @@
 package com.pidlisnyi_prymachenko.Project.controller;
 
-import java.util.List;
-
-import org.apache.commons.lang.exception.ExceptionUtils;
 import com.pidlisnyi_prymachenko.Project.dao.OrderDAO;
 import com.pidlisnyi_prymachenko.Project.dao.ProductDAO;
 import com.pidlisnyi_prymachenko.Project.entity.Product;
@@ -11,6 +8,7 @@ import com.pidlisnyi_prymachenko.Project.model.OrderDetailInfo;
 import com.pidlisnyi_prymachenko.Project.model.OrderInfo;
 import com.pidlisnyi_prymachenko.Project.pagination.PaginationResult;
 import com.pidlisnyi_prymachenko.Project.validator.ProductFormValidator;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,12 +18,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @Transactional
