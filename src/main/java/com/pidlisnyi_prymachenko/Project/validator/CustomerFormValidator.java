@@ -1,7 +1,7 @@
 package com.pidlisnyi_prymachenko.Project.validator;
 
-import org.apache.commons.validator.routines.EmailValidator;
 import com.pidlisnyi_prymachenko.Project.form.CustomerForm;
+import org.apache.commons.validator.EmailValidator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
