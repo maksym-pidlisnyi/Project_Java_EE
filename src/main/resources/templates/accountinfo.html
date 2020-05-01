@@ -1,20 +1,109 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Account Info</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
+<div class="wrapper">
+    <div class="content">
+        <header class="header-container"
+                xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+            <nav id="header-nav" class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a href="index.html" class="pull-left visible-md visible-lg">
+                            <div id="logo-img"></div>
+                        </a>
 
-<th:block th:include="/_header"></th:block>
-<th:block th:include="/_menu"></th:block>
+                        <div class="navbar-brand">
+                            <a href="index.html"><h1>Neon rider</h1></a>
+                        </div>
 
-<div class="page-title">Account Info</div>
+                        <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#collapsable-nav" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div id="collapsable-nav" class="collapse navbar-collapse">
+                        <ul id="nav-list" class="nav navbar-nav navbar-right">
+                            <li>
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <br class="hidden-xs">
+                                    <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a>
+                                </th:block>
+                            </li>
+                            <li class="visible-xs active">
+                                <a th:href="@{/}">
+                                    <br class="hidden-xs"> Main</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/productList}">
+                                    <br class="hidden-xs"> Catalogue</a>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_EMPLOYEE')">
+                                    <a th:href="@{/admin/orderList}">
+                                        <br class="hidden-xs"> Order List</a>
+                                </th:block>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="hasRole('ROLE_MANAGER')">
+                                    <a th:href="@{/admin/product}">
+                                        <br class="hidden-xs"> Create Product</a>
+                                </th:block>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/admin/logout}">
+                                        <br class="hidden-xs">Logout</a>
+                                </th:block>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="!isAuthenticated()">
+                                    <a th:href="@{/admin/login}">
+                                        <br class="hidden-xs">Login</a>
+                                </th:block>
+                            </li>
+                            <li id="phone" class="hidden-xs">
+                                <a href="tel:410-602-5008">
+                                    <span>123-456-7890</span></a>
+                                <div>* We deliver</div>
+                            </li>
+                            <li>
+                                <a th:href="@{/shoppingCart}">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!--<th:block th:include="/_header"></th:block>-->
+        <!--<th:block th:include="/_menu"></th:block>-->
+
+        <div class="page-title">Account Info</div>
 <div class="account-container">
     <ul>
         <li>User Name: <span th:utext="${#request.userPrincipal.name}"></span></li>
         <li>
+            <!--            TODO improve design-->
             Role:
             <ul>
                 <li th:each="auth : ${userDetails.authorities}" th:utext="${auth.authority}"></li>
@@ -23,7 +112,37 @@
     </ul>
 </div>
 
-<th:block th:include="/_footer"></th:block>
-
+        <!--<th:block th:include="/_footer"></th:block>-->
+    </div>
+    <footer class="panel-footer">
+        <div class="container">
+            <div class="row">
+                <section id="hours" class="col-sm-4">
+                    <span>Hours:</span><br>
+                    Sun-Thurs: 11:15am - 10:00pm<br>
+                    Fri: 11:15am - 2:30pm<br>
+                    Saturday Closed
+                    <hr class="visible-xs">
+                </section>
+                <section id="address" class="col-sm-4">
+                    <span>Address:</span><br>
+                    2 Hryhoriya Skovorody<br>
+                    Kyiv, 04655
+                    <p>* Delivery area within 3-4 miles, with minimum order of $20 plus $3 charge for all
+                        deliveries.</p>
+                    <hr class="visible-xs">
+                </section>
+                <section id="testimonials" class="col-sm-4">
+                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">My repositories</a></p>
+                    <p>Contact information: <a href="mailto:p.maxsym@gmail.com">p.maxsym@gmail.com</a></p>
+                </section>
+            </div>
+            <div class="text-center">&copy; Copyright My-Store 2019</div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
 </body>
 </html>
