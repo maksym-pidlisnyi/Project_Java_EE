@@ -21,12 +21,12 @@
             <nav id="header-nav" class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a href="index.html" class="pull-left visible-md visible-lg">
+                        <a th:href="@{/}" class="pull-left visible-md visible-lg">
                             <div id="logo-img"></div>
                         </a>
 
                         <div class="navbar-brand">
-                            <a href="index.html"><h1>Neon rider</h1></a>
+                            <a th:href="@{/}"><h1>Neon rider</h1></a>
                         </div>
 
                         <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -97,76 +97,22 @@
                 </div>
             </nav>
         </header>
-<!--<th:block th:include="/_header"></th:block>-->
-        <!--<div class="header-container"-->
-        <!--     xmlns:th="http://www.thymeleaf.org"-->
-        <!--     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
-
-        <!--    <div class="site-name">Online Shop</div>-->
-
-        <!--    <div class="header-bar">-->
-        <!--        <th:block sec:authorize="isAuthenticated()">-->
-        <!--            Hello-->
-        <!--            <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a>-->
-        <!--            &nbsp;|&nbsp;-->
-        <!--            <a th:href="@{/admin/logout}">Logout</a>-->
-        <!--        </th:block>-->
-
-        <!--        <th:block sec:authorize="!isAuthenticated()">-->
-        <!--            <a th:href="@{/admin/login}">Login</a>-->
-        <!--        </th:block>-->
-        <!--    </div>-->
-
-        <!--</div>-->
-<!--<th:block th:include="/_menu"></th:block>-->
-        <!--<div class="menu-container"-->
-        <!--     xmlns:th="http://www.thymeleaf.org"-->
-        <!--     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
-        <!--    <a th:href="@{/}">Home</a>-->
-        <!--    |-->
-        <!--    <a th:href="@{/productList}">-->
-        <!--        Product List-->
-        <!--    </a>-->
-        <!--    |-->
-        <!--    <a th:href="@{/shoppingCart}">-->
-        <!--        My Cart-->
-        <!--    </a>-->
-        <!--    |-->
-        <!--    <th:block sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_EMPLOYEE')">-->
-        <!--        <a th:href="@{/admin/orderList}">-->
-        <!--            Order List-->
-        <!--        </a>-->
-        <!--        |-->
-        <!--    </th:block>-->
-        <!--    <th:block sec:authorize="hasRole('ROLE_MANAGER')">-->
-        <!--        <a th:href="@{/admin/product}">-->
-        <!--            Create Product-->
-        <!--        </a>-->
-        <!--        |-->
-        <!--    </th:block>-->
-        <!--</div>-->
-
-        <div class="page-title">Shopping Cart Demo</div>
-<div class="demo-container">
-    <h3>Demo content</h3>
-    <ul>
-        <li>Buy online</li>
-        <li>Admin pages</li>
-        <li>Reports</li>
-    </ul>
-</div>
-
-        <!--<th:block th:include="/_footer"></th:block>-->
-        <!--<div class="footer-container">-->
-
-        <!--    @Copy right <a href="//o7planning.org" target="_blank">o7planning.org</a>-->
-        <!--    <br>-->
-        <!--    See more <a>demo</a>-->
-
-        <!--</div>-->
+        <!--        <div class="page-title">Shopping Cart Demo</div>-->
+        <div class="container-fluid text-center">
+            <div class="slider-container">
+                <div class="slider">
+                    <div><img th:src="@{/img/slide1.png}"/></div>
+                    <div><img th:src="@{/img/slide1.png}"/></div>
+                    <div><img th:src="@{/img/slide1.png}"/></div>
+                    <div><img th:src="@{/img/slide1.png}"/></div>
+                    <div><img th:src="@{/img/slide1.png}"/></div>
+                    <!--                    TODO fix slider bugs-->
+                </div>
+            </div>
+        </div>
     </div>
     <footer class="panel-footer">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <section id="hours" class="col-sm-4">
                     <span>Hours:</span><br>
@@ -184,16 +130,25 @@
                     <hr class="visible-xs">
                 </section>
                 <section id="testimonials" class="col-sm-4">
-                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">My repositories</a></p>
+                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">Maksym Pidlisnyi</a></p>
+                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">Ilya Prymachenko</a></p>
                     <p>Contact information: <a href="mailto:p.maxsym@gmail.com">p.maxsym@gmail.com</a></p>
+                    <p>Contact information: <a href="mailto:illyaprimak@gmail.com">illyaprimak@gmail.com</a></p>
                 </section>
             </div>
-            <div class="text-center">&copy; Copyright My-Store 2019</div>
+            <div class="text-center">&copy; Copyright Neon Rider 2020</div>
         </div>
     </footer>
 </div>
 <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 <script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/script.js}"></script>
+<script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js}"></script>
+<script>
+    $(document).ready(function () {
+        $('.slider').bxSlider();
+    });
+</script>
+<script src="js/bootstrap.js" type="text/javascript"></script>
 </body>
 </html>

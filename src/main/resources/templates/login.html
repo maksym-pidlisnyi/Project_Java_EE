@@ -44,7 +44,7 @@
                                     <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a>
                                 </th:block>
                             </li>
-                            <li class="visible-xs active">
+                            <li>
                                 <a th:href="@{/}">
                                     <br class="hidden-xs"> Main</a>
                             </li>
@@ -70,7 +70,7 @@
                                         <br class="hidden-xs">Logout</a>
                                 </th:block>
                             </li>
-                            <li>
+                            <li class="visible-xs active">
                                 <th:block sec:authorize="!isAuthenticated()">
                                     <a th:href="@{/admin/login}">
                                         <br class="hidden-xs">Login</a>
@@ -98,43 +98,47 @@
         </header>
 
 <div class="page-title">Login (For Employee, Manager)</div>
-
 <div class="login-container">
-    <h3>Enter username and password</h3>
-    <br>
-    <!-- /login?error=true -->
-    <th:block th:if="${#session != null && #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}">
-        <div th:if="${#request.getParameter('error') == 'true'}"
-             style="color: red; margin: 10px 0px;">
-            Login Failed!!!<br/> Reason :
-            <span th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}"></span>
-        </div>
-    </th:block>
+    <div class="container" style="
+    width: fit-content;
+">
+        <div class="row">
+            <h3>Enter username and password</h3>
+            <br>
+            <!-- /login?error=true -->
+            <th:block th:if="${#session != null && #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}">
+                <div th:if="${#request.getParameter('error') == 'true'}"
+                     style="color: red; margin: 10px 0px;">
+                    Login Failed!!!<br/> Reason :
+                    <span th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}"></span>
+                </div>
+            </th:block>
 
-    <form method="POST"
-          th:action="@{/j_spring_security_check}">
-        <table>
-            <tr>
-                <td>User Name *</td>
-                <td><input name="userName"/></td>
-            </tr>
-            <tr>
-                <td>Password *</td>
-                <td><input type="password" name="password"/></td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <input type="submit" value="Login"/>
-                    <input type="reset" value="Reset"/>
-                </td>
-            </tr>
-        </table>
-    </form>
+            <form method="POST"
+                  th:action="@{/j_spring_security_check}">
+                <table>
+                    <tr>
+                        <td>User Name *</td>
+                        <td><input name="userName"/></td>
+                    </tr>
+                    <tr>
+                        <td>Password *</td>
+                        <td><input type="password" name="password"/></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <input type="submit" value="Login"/>
+                            <input type="reset" value="Reset"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
 
-    <span class="error-message" th:utext="${error}"></span>
+            <span class="error-message" th:utext="${error}"></span>
 </div>
-
+    </div>
+</div>
 <div style="text-align:left">
     <h3>User/Password:</h3>
     <ul>
@@ -146,7 +150,7 @@
         <!--<th:block th:include="/_footer"></th:block>-->
     </div>
     <footer class="panel-footer">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <section id="hours" class="col-sm-4">
                     <span>Hours:</span><br>
@@ -164,11 +168,13 @@
                     <hr class="visible-xs">
                 </section>
                 <section id="testimonials" class="col-sm-4">
-                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">My repositories</a></p>
+                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">Maksym Pidlisnyi</a></p>
+                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">Ilya Prymachenko</a></p>
                     <p>Contact information: <a href="mailto:p.maxsym@gmail.com">p.maxsym@gmail.com</a></p>
+                    <p>Contact information: <a href="mailto:illyaprimak@gmail.com">illyaprimak@gmail.com</a></p>
                 </section>
             </div>
-            <div class="text-center">&copy; Copyright My-Store 2019</div>
+            <div class="text-center">&copy; Copyright Neon Rider 2020</div>
         </div>
     </footer>
 </div>
