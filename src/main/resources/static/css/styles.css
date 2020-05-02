@@ -230,7 +230,7 @@ del {
 
 .price {
     display: inline-block;
-    font-size: 19pt;
+    /*font-size: 19pt;*/
 }
 
 @media print {

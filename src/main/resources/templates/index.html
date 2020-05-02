@@ -98,16 +98,24 @@
             </nav>
         </header>
         <!--        <div class="page-title">Shopping Cart Demo</div>-->
-        <div class="container-fluid text-center">
-            <div class="slider-container">
-                <div class="slider">
-                    <div><img th:src="@{/img/slide1.png}"/></div>
-                    <div><img th:src="@{/img/slide1.png}"/></div>
-                    <div><img th:src="@{/img/slide1.png}"/></div>
-                    <div><img th:src="@{/img/slide1.png}"/></div>
-                    <div><img th:src="@{/img/slide1.png}"/></div>
-                    <!--                    TODO fix slider bugs-->
-                </div>
+        <!--        <div class="container-fluid text-center">-->
+        <!--            <div class="slider-container">-->
+        <!--                <div class="slider">-->
+        <!--                    <div><img th:src="@{/img/slide1.png}"/></div>-->
+        <!--                    <div><img th:src="@{/img/slide1.png}"/></div>-->
+        <!--                    <div><img th:src="@{/img/slide1.png}"/></div>-->
+        <!--                    <div><img th:src="@{/img/slide1.png}"/></div>-->
+        <!--                    <div><img th:src="@{/img/slide1.png}"/></div>-->
+        <!--                    &lt;!&ndash;                    TODO fix slider bugs&ndash;&gt;-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="container text-center">
+            <div class="row">
+                <img style="width: 50%; height: 50%;
+"
+                     src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/58075ac8-f546-46ed-aecb-911273da96b4/dayxtk4-54bba59d-aa15-40f0-b217-fe0b74a3e37f.jpg/v1/fill/w_1024,h_1339,q_75,strp/neon_rider____by_sk_vela_dayxtk4-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMzOSIsInBhdGgiOiJcL2ZcLzU4MDc1YWM4LWY1NDYtNDZlZC1hZWNiLTkxMTI3M2RhOTZiNFwvZGF5eHRrNC01NGJiYTU5ZC1hYTE1LTQwZjAtYjIxNy1mZTBiNzRhM2UzN2YuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.G5fifA555umIUbzcR14AaAm1chnKy1lx5-Ia2B5PIiU"
+                     alt=""/>
             </div>
         </div>
     </div>
@@ -140,15 +148,13 @@
         </div>
     </footer>
 </div>
-<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 <script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/script.js}"></script>
 <script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js}"></script>
 <script>
     $(document).ready(function () {
         $('.slider').bxSlider();
     });
 </script>
-<script src="js/bootstrap.js" type="text/javascript"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 </body>
 </html>

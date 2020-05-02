@@ -102,7 +102,7 @@ ul {
 }
 
 .button-update-sc {
-    color: red;
+    /*color: red;*/
     margin: 5px 5px 5px 20px;
 }
 
@@ -130,7 +130,6 @@ ul {
 .total {
     color: red;
     font-weight: bold;
-    font-size: 120%;
 }
 
 table td {
