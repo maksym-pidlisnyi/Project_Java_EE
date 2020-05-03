@@ -118,9 +118,10 @@ header {
 }
 
 .panel-footer {
-    margin-top: 70px;
-    padding-top: 35px;
-    padding-bottom: 35px;
+    /*margin-top: 70px;*/
+    margin-top: 1%;
+    /*padding-top: 35px;*/
+    /*padding-bottom: 35px;*/
     background-color: rgba(103, 103, 103, 0.83);
     border-top: 0;
 }
@@ -147,7 +148,7 @@ header {
     font-style: italic;
 }
 
-#testimonials p:nth-child(2) {
+#testimonials p:nth-child(3) {
     margin-top: 25px;
 }
 
@@ -229,7 +230,7 @@ del {
 
 .price {
     display: inline-block;
-    font-size: 19pt;
+    /*font-size: 19pt;*/
 }
 
 @media print {
@@ -248,7 +249,7 @@ del {
         padding-top: 40px;
     }
 
-    .item {
+    .item, product-preview-container {
         margin: 20px;
         overflow: hidden;
     }

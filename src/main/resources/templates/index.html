@@ -1,25 +1,160 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Books Shop Online</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
-<th:block th:include="/_header"></th:block>
-<th:block th:include="/_menu"></th:block>
+<div class="wrapper">
+    <div class="content">
+        <header class="header-container"
+                xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+            <nav id="header-nav" class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a th:href="@{/}" class="pull-left visible-md visible-lg">
+                            <div id="logo-img"></div>
+                        </a>
 
-<div class="page-title">Shopping Cart Demo</div>
-<div class="demo-container">
-    <h3>Demo content</h3>
-    <ul>
-        <li>Buy online</li>
-        <li>Admin pages</li>
-        <li>Reports</li>
-    </ul>
+                        <div class="navbar-brand">
+                            <a th:href="@{/}"><h1>Neon rider</h1></a>
+                        </div>
+
+                        <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#collapsable-nav" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div id="collapsable-nav" class="collapse navbar-collapse">
+                        <ul id="nav-list" class="nav navbar-nav navbar-right">
+                            <li>
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <br class="hidden-xs">
+                                    <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a>
+                                </th:block>
+                            </li>
+                            <li class="visible-xs active">
+                                <a th:href="@{/}">
+                                    <br class="hidden-xs"> Main</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/productList}">
+                                    <br class="hidden-xs"> Catalogue</a>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_EMPLOYEE')">
+                                    <a th:href="@{/admin/orderList}">
+                                        <br class="hidden-xs"> Order List</a>
+                                </th:block>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="hasRole('ROLE_MANAGER')">
+                                    <a th:href="@{/admin/product}">
+                                        <br class="hidden-xs"> Create Product</a>
+                                </th:block>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/admin/logout}">
+                                        <br class="hidden-xs">Logout</a>
+                                </th:block>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="!isAuthenticated()">
+                                    <a th:href="@{/admin/login}">
+                                        <br class="hidden-xs">Login</a>
+                                </th:block>
+                            </li>
+                            <li id="phone" class="hidden-xs">
+                                <a href="tel:410-602-5008">
+                                    <span>123-456-7890</span></a>
+                                <div>* We deliver</div>
+                            </li>
+                            <li>
+                                <a th:href="@{/shoppingCart}">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!--        <div class="page-title">Shopping Cart Demo</div>-->
+        <!--        <div class="container-fluid text-center">-->
+        <!--            <div class="slider-container">-->
+        <!--                <div class="slider">-->
+        <!--                    <div><img th:src="@{/img/slide1.png}"/></div>-->
+        <!--                    <div><img th:src="@{/img/slide1.png}"/></div>-->
+        <!--                    <div><img th:src="@{/img/slide1.png}"/></div>-->
+        <!--                    <div><img th:src="@{/img/slide1.png}"/></div>-->
+        <!--                    <div><img th:src="@{/img/slide1.png}"/></div>-->
+        <!--                    &lt;!&ndash;                    TODO fix slider bugs&ndash;&gt;-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="container text-center">
+            <div class="row">
+                <img style="width: 50%; height: 50%;
+"
+                     src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/58075ac8-f546-46ed-aecb-911273da96b4/dayxtk4-54bba59d-aa15-40f0-b217-fe0b74a3e37f.jpg/v1/fill/w_1024,h_1339,q_75,strp/neon_rider____by_sk_vela_dayxtk4-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMzOSIsInBhdGgiOiJcL2ZcLzU4MDc1YWM4LWY1NDYtNDZlZC1hZWNiLTkxMTI3M2RhOTZiNFwvZGF5eHRrNC01NGJiYTU5ZC1hYTE1LTQwZjAtYjIxNy1mZTBiNzRhM2UzN2YuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.G5fifA555umIUbzcR14AaAm1chnKy1lx5-Ia2B5PIiU"
+                     alt=""/>
+            </div>
+        </div>
+    </div>
+    <footer class="panel-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <section id="hours" class="col-sm-4">
+                    <span>Hours:</span><br>
+                    Sun-Thurs: 11:15am - 10:00pm<br>
+                    Fri: 11:15am - 2:30pm<br>
+                    Saturday Closed
+                    <hr class="visible-xs">
+                </section>
+                <section id="address" class="col-sm-4">
+                    <span>Address:</span><br>
+                    2 Hryhoriya Skovorody<br>
+                    Kyiv, 04655
+                    <p>* Delivery area within 3-4 miles, with minimum order of $20 plus $3 charge for all
+                        deliveries.</p>
+                    <hr class="visible-xs">
+                </section>
+                <section id="testimonials" class="col-sm-4">
+                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">Maksym Pidlisnyi</a></p>
+                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">Ilya Prymachenko</a></p>
+                    <p>Contact information: <a href="mailto:p.maxsym@gmail.com">p.maxsym@gmail.com</a></p>
+                    <p>Contact information: <a href="mailto:illyaprimak@gmail.com">illyaprimak@gmail.com</a></p>
+                </section>
+            </div>
+            <div class="text-center">&copy; Copyright Neon Rider 2020</div>
+        </div>
+    </footer>
 </div>
-
-<th:block th:include="/_footer"></th:block>
-
+<script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+<script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js}"></script>
+<script>
+    $(document).ready(function () {
+        $('.slider').bxSlider();
+    });
+</script>
+<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 </body>
 </html>

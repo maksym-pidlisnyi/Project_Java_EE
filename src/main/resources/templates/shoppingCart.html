@@ -1,14 +1,102 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shopping Cart</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
-<th:block th:include="/_header"></th:block>
-<th:block th:include="/_menu"></th:block>
+<div class="wrapper">
+    <div class="content">
+        <header class="header-container"
+                xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+            <nav id="header-nav" class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a href="index.html" class="pull-left visible-md visible-lg">
+                            <div id="logo-img"></div>
+                        </a>
 
+                        <div class="navbar-brand">
+                            <a href="index.html"><h1>Neon rider</h1></a>
+                        </div>
+
+                        <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#collapsable-nav" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div id="collapsable-nav" class="collapse navbar-collapse">
+                        <ul id="nav-list" class="nav navbar-nav navbar-right">
+                            <li>
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <br class="hidden-xs">
+                                    <a th:href="@{/admin/accountInfo}" th:utext="${#request.userPrincipal.name}">..</a>
+                                </th:block>
+                            </li>
+                            <li>
+                                <a th:href="@{/}">
+                                    <br class="hidden-xs"> Main</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/productList}">
+                                    <br class="hidden-xs"> Catalogue</a>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_EMPLOYEE')">
+                                    <a th:href="@{/admin/orderList}">
+                                        <br class="hidden-xs"> Order List</a>
+                                </th:block>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="hasRole('ROLE_MANAGER')">
+                                    <a th:href="@{/admin/product}">
+                                        <br class="hidden-xs"> Create Product</a>
+                                </th:block>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <a th:href="@{/admin/logout}">
+                                        <br class="hidden-xs">Logout</a>
+                                </th:block>
+                            </li>
+                            <li>
+                                <th:block sec:authorize="!isAuthenticated()">
+                                    <a th:href="@{/admin/login}">
+                                        <br class="hidden-xs">Login</a>
+                                </th:block>
+                            </li>
+                            <li id="phone" class="hidden-xs">
+                                <a href="tel:410-602-5008">
+                                    <span>123-456-7890</span></a>
+                                <div>* We deliver</div>
+                            </li>
+                            <li>
+                                <a th:href="@{/shoppingCart}">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container text-center">
+            <div class="row">
 <div class="page-title">My Cart</div>
 
 <th:block th:if="${cartForm == null || cartForm.cartLines == null || cartForm.cartLines.empty}">
@@ -19,13 +107,15 @@
 <th:block th:if="${cartForm != null && cartForm.cartLines != null && !cartForm.cartLines.empty}">
     <form method="POST" th:object="${cartForm}" th:action="@{/shoppingCart}">
 
-        <div class="product-preview-container"
+        <div class="product-preview-container" style="margin: 2.5%;"
              th:each="cartLineInfo, varStatus : ${cartForm.cartLines}">
             <ul>
                 <li><img class="product-image"
                          th:src="@{|/productImage?code=${cartLineInfo.productInfo.code}|}" />
                 </li>
-                <li>Code: <span th:utext="${cartLineInfo.productInfo.code}"></span>
+                <li style="
+    font-size: smaller;
+    margin-bottom: 5%;">Code: <span th:utext="${cartLineInfo.productInfo.code}"></span>
                     <input type="hidden"
                            th:name="|cartLines[${varStatus.index}].productInfo.code|"
                            th:value="${cartLineInfo.productInfo.code}" />
@@ -42,11 +132,13 @@
                             th:value="${cartLineInfo.quantity}" />
                 </li>
                 <li>Subtotal:
-                    <span class="subtotal"
+                    <span style="
+    font-size: 18pt;
+" class="subtotal"
                           th:utext="${#numbers.formatDecimal(cartLineInfo.amount,3,2,'COMMA')}">
                         </span>
                 </li>
-                <li>
+                <li class="btn btn-danger" style="margin-top: 10%;">
                     <a th:href="@{|/shoppingCartRemoveProduct?code=${cartLineInfo.productInfo.code}|}">
                         Delete
                     </a>
@@ -55,15 +147,48 @@
         </div>
 
         <div style="clear: both"></div>
-        <input class="button-update-sc" type="submit" value="Update Quantity" />
-        <a class="navi-item"
+        <input class="button-update-sc btn btn-warning" type="submit" value="Update Quantity"/>
+        <a class="navi-item btn btn-success"
            th:href="@{/shoppingCartCustomer}">Enter Customer Info</a>
-        <a class="navi-item"
+        <a class="navi-item btn btn-primary"
            th:href="@{/productList}">Continue Buy</a>
     </form>
 </th:block>
-
-<th:block th:include="/_footer"></th:block>
-
+            </div>
+        </div>
+        <!--<th:block th:include="/_footer"></th:block>-->
+    </div>
+    <footer class="panel-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <section id="hours" class="col-sm-4">
+                    <span>Hours:</span><br>
+                    Sun-Thurs: 11:15am - 10:00pm<br>
+                    Fri: 11:15am - 2:30pm<br>
+                    Saturday Closed
+                    <hr class="visible-xs">
+                </section>
+                <section id="address" class="col-sm-4">
+                    <span>Address:</span><br>
+                    2 Hryhoriya Skovorody<br>
+                    Kyiv, 04655
+                    <p>* Delivery area within 3-4 miles, with minimum order of $20 plus $3 charge for all
+                        deliveries.</p>
+                    <hr class="visible-xs">
+                </section>
+                <section id="testimonials" class="col-sm-4">
+                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">Maksym Pidlisnyi</a></p>
+                    <p>Git: <a href="https://github.com/MyPersonalGitRepositories">Ilya Prymachenko</a></p>
+                    <p>Contact information: <a href="mailto:p.maxsym@gmail.com">p.maxsym@gmail.com</a></p>
+                    <p>Contact information: <a href="mailto:illyaprimak@gmail.com">illyaprimak@gmail.com</a></p>
+                </section>
+            </div>
+            <div class="text-center">&copy; Copyright Neon Rider 2020</div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
 </body>
 </html>
