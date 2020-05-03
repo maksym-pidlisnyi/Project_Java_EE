@@ -114,7 +114,7 @@
                            th:name="|cartLines[${varStatus.index}].productInfo.code|"
                            th:value="${cartLineInfo.productInfo.code}" />
                 </li>
-                <li>Name: <span th:utext="${cartLineInfo.productInfo.name}"></span></li>
+                <li><span th:utext="${cartLineInfo.productInfo.name}"></span></li>
                 <li>Price:
                     <span class="price"
                           th:utext="${#numbers.formatDecimal(cartLineInfo.productInfo.price,3,2,'COMMA')}">
