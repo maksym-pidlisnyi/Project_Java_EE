@@ -78,6 +78,7 @@
                             <li>
                                 <a th:href="@{/shoppingCart}">
                                     <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    <!--                                    <span class=" total-count badge"></span>-->
                                 </a>
                             </li>
                         </ul>
@@ -93,14 +94,14 @@
         <div class="container-fluid text-center">
 <div class="page-title">Product List</div>
             <div class="row">
-<div class="product-preview-container" th:each="prodInfo : ${paginationProducts.list}">
+                <div class="product-preview-container product" th:each="prodInfo : ${paginationProducts.list}">
     <ul>
         <li class="imBox"><img class="product-image"
                                th:src="@{|/productImage?code=${prodInfo.code}|}" /></li>
         <li style="
     font-size: smaller;
     margin-bottom: 5%;">Code: <span th:utext="${prodInfo.code}"></span></li>
-        <li>Name: <span th:utext="${prodInfo.name}"></span></li>
+        <li><span th:utext="${prodInfo.name}"></span></li>
         <li>Price: <span th:utext="${#numbers.formatDecimal(prodInfo.price,3,2,'COMMA')}"></span></li>
         <li class="btn btn-info" style="
     margin-top: 10%;
