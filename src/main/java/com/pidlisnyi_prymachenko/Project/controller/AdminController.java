@@ -65,7 +65,7 @@ public class AdminController {
         System.out.println(userDetails.isEnabled());
 
         model.addAttribute("userDetails", userDetails);
-        return "accountInfo";
+        return "index";
     }
 
     @RequestMapping(value = { "/admin/orderList" }, method = RequestMethod.GET)
