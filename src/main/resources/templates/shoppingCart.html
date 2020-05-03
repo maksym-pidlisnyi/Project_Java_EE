@@ -110,8 +110,8 @@
         <div class="product-preview-container" style="margin: 2.5%;"
              th:each="cartLineInfo, varStatus : ${cartForm.cartLines}">
             <ul>
-                <li><img class="product-image"
-                         th:src="@{|/productImage?code=${cartLineInfo.productInfo.code}|}" />
+                <li class="imBox"><img class="product-image"
+                                       th:src="@{|/productImage?code=${cartLineInfo.productInfo.code}|}" />
                 </li>
                 <li style="
     font-size: smaller;
